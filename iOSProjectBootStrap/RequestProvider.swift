@@ -13,11 +13,21 @@ public let RequestProviderErrorDomain: String = "com.RequestProvider.error"
 typealias ErrorHandler = (Error?)->()
 
 protocol RequestProvider {
+    // represents the request
+    // should contain methods and properties that represent
+    // the data and processing
+    // eg: URLRequest in case of a URL
     associatedtype Entity: RequestEntity
     var requestEntity: Entity? {get}
+    
+    // error handling
     var error: ErrorHandler? {get}
     func error(_ error: @escaping ErrorHandler) -> Self
+    
+    // returns the enity object
+    // may undergo processing/configuration after intial object creation
     mutating func request() -> Entity?
+    
     // for covenience there is a provision
     // to pass on a preconfigured requestEntity
     // takes the most precedence
@@ -35,17 +45,20 @@ protocol UrlRequestProvider: RequestProvider where Entity:UrlRequestEntity {
 }
 
 class HTTPUrlRequestProvider: UrlRequestProvider {
+
+    // read only properties - internal
+    private(set) var url: String = ""
     
+    //MARK:- UrlRequestProvider
     typealias Entity = URLRequest
     
     required init(_ requestEntity: @autoclosure () -> Entity? = nil) {
         self.requestEntity = requestEntity()
     }
-
-    // read only properties
-    private(set) var url: String = ""
-    private(set) var error: ErrorHandler? = nil
-    private(set) var requestEntity: Entity?
+    
+    // read only properties - UrlRequestProvider
+    lazy private(set) var error: ErrorHandler? = nil
+    lazy private(set) var requestEntity: Entity? = nil
     
     func url(_ url: String) -> Self {
         self.url = url

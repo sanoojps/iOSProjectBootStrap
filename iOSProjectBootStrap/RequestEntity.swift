@@ -11,7 +11,8 @@ import Foundation
 // Base Protocol To be used by all classes that
 // represent an object
 protocol RequestEntity {
-    
+    // update or return final request
+    mutating func request() -> Self?
 }
 
 protocol UrlRequestEntity: RequestEntity {
@@ -27,8 +28,6 @@ protocol UrlRequestEntity: RequestEntity {
     
     // init
     init?(url: String)
-    // update or return final request
-    mutating func request() -> Self?
 }
 
 //MARK: - RequestURLComponents helper
