@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D80D482424C351A20047E046 /* RequestEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80D482324C351A20047E046 /* RequestEntity.swift */; };
 		D87C811524A7F12700035B65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C811424A7F12700035B65 /* AppDelegate.swift */; };
 		D87C811724A7F12700035B65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C811624A7F12700035B65 /* SceneDelegate.swift */; };
 		D87C811924A7F12700035B65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C811824A7F12700035B65 /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 		D87C812424A7F12B00035B65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87C812224A7F12B00035B65 /* LaunchScreen.storyboard */; };
 		D87C812F24A7F12B00035B65 /* iOSProjectBootStrapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C812E24A7F12B00035B65 /* iOSProjectBootStrapTests.swift */; };
 		D87C813A24A7F12B00035B65 /* iOSProjectBootStrapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C813924A7F12B00035B65 /* iOSProjectBootStrapUITests.swift */; };
+		D87C814924A80C2F00035B65 /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C814824A80C2F00035B65 /* RequestProvider.swift */; };
+		D87C814B24A8528500035B65 /* Redux.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C814A24A8528500035B65 /* Redux.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D80D482324C351A20047E046 /* RequestEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestEntity.swift; sourceTree = "<group>"; };
 		D87C811124A7F12700035B65 /* iOSProjectBootStrap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSProjectBootStrap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87C811424A7F12700035B65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D87C811624A7F12700035B65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,9 @@
 		D87C813524A7F12B00035B65 /* iOSProjectBootStrapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSProjectBootStrapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87C813924A7F12B00035B65 /* iOSProjectBootStrapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSProjectBootStrapUITests.swift; sourceTree = "<group>"; };
 		D87C813B24A7F12B00035B65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D87C814724A7F14100035B65 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D87C814824A80C2F00035B65 /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
+		D87C814A24A8528500035B65 /* Redux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redux.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +116,10 @@
 				D87C812224A7F12B00035B65 /* LaunchScreen.storyboard */,
 				D87C812524A7F12B00035B65 /* Info.plist */,
 				D87C811D24A7F12700035B65 /* iOSProjectBootStrap.xcdatamodeld */,
+				D87C814724A7F14100035B65 /* README.md */,
+				D87C814824A80C2F00035B65 /* RequestProvider.swift */,
+				D80D482324C351A20047E046 /* RequestEntity.swift */,
+				D87C814A24A8528500035B65 /* Redux.swift */,
 			);
 			path = iOSProjectBootStrap;
 			sourceTree = "<group>";
@@ -263,6 +274,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D87C811F24A7F12700035B65 /* iOSProjectBootStrap.xcdatamodeld in Sources */,
+				D80D482424C351A20047E046 /* RequestEntity.swift in Sources */,
+				D87C814924A80C2F00035B65 /* RequestProvider.swift in Sources */,
+				D87C814B24A8528500035B65 /* Redux.swift in Sources */,
 				D87C811924A7F12700035B65 /* ViewController.swift in Sources */,
 				D87C811524A7F12700035B65 /* AppDelegate.swift in Sources */,
 				D87C811724A7F12700035B65 /* SceneDelegate.swift in Sources */,
