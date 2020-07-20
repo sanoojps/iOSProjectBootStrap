@@ -36,10 +36,6 @@ protocol UrlRequestProvider: RequestProvider where Entity:UrlRequestEntity {
 
 class HTTPUrlRequestProvider: UrlRequestProvider {
     
-    func request() -> URLRequest? {
-        return self.requestEntity?.request()
-    }
-    
     typealias Entity = URLRequest
     
     required init(_ requestEntity: @autoclosure () -> Entity? = nil) {
@@ -53,14 +49,6 @@ class HTTPUrlRequestProvider: UrlRequestProvider {
     
     func url(_ url: String) -> Self {
         self.url = url
-//        // ckeck for trailing backslash
-//        if let lastChar =  url.last,
-//            lastChar != "/" {
-//            // add backslash
-//            self.url += "/"
-//        }
-//        self.urlComponents = URLComponents.init(string: url)
-        
         if self.requestEntity == nil {
             self.requestEntity = Entity(url: url)
         }
@@ -68,26 +56,11 @@ class HTTPUrlRequestProvider: UrlRequestProvider {
     }
     
     func path(_ path: String...) -> Self {
-//        let path = path.reduce("", { (result: String, path: String) -> String in
-//            return result + "/" + path
-//        })
-//        self.urlComponents?.path = path
-        
         self.requestEntity?.requestPath = path
         return self
     }
     
     func query(_ queryParamters: (String,String)...) -> Self {
-//        let urlQueryItems = queryParamters.map { (query:(key: String, value:String)) -> URLQueryItem in
-//            return URLQueryItem(name: query.key, value: query.value)
-//        }
-//        guard var queryItems = self.urlComponents?.queryItems else {
-//            self.urlComponents?.queryItems = urlQueryItems
-//            return self
-//        }
-//        queryItems.append(contentsOf: urlQueryItems)
-//        self.urlComponents?.queryItems = queryItems
-        
         self.requestEntity?.requestQuery = queryParamters
         return self
     }
@@ -117,6 +90,22 @@ class HTTPUrlRequestProvider: UrlRequestProvider {
     func httpBody(_ httpBody: Data) -> Self {
         self.requestEntity?.requestHttpBody = httpBody
         return self
+    }
+    
+    func request() -> URLRequest? {
+        let request = self.requestEntity?.request()
+        if request == nil {
+            // error
+            let error = NSError(
+                domain: RequestProviderErrorDomain,
+                code: 999998,
+                userInfo: [
+                    NSLocalizedDescriptionKey :
+                    "Unknown Error. Failed to create URL object for URL \(self.url)"
+            ])
+            self.error?(error)
+        }
+        return request
     }
     
 //    func request() -> URLRequest? {

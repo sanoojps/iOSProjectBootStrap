@@ -31,13 +31,9 @@ protocol UrlRequestEntity: RequestEntity {
     mutating func request() -> Self?
 }
 
-extension URLRequest: UrlRequestEntity {
-    
-    mutating func request() -> URLRequest? {
-        self.url = RequestURLComponents.fullyFormedUrl()!
-        return self
-    }
-    
+//MARK: - RequestURLComponents helper
+/// Genarate URL from URLComponents
+extension URLRequest {
     private struct RequestURLComponents {
         static var path: [String] = []
         static var queryParamters: [(String,String)] = []
@@ -65,6 +61,26 @@ extension URLRequest: UrlRequestEntity {
             self.urlComponents?.queryItems = urlQueryItems
             return self.urlComponents?.url
         }
+        
+        static func reset() {
+            self.path.removeAll()
+            self.queryParamters.removeAll()
+            self.url = ""
+            self.urlComponents = nil
+        }
+        
+    }
+}
+
+//MARK: - UrlRequestEntity
+extension URLRequest: UrlRequestEntity {
+    
+    mutating func request() -> URLRequest? {
+        // update request
+        self.url = RequestURLComponents.fullyFormedUrl()!
+        // reset
+        RequestURLComponents.reset()
+        return self
     }
     
     init?(url: String) {
